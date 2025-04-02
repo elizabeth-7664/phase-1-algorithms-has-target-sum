@@ -1,20 +1,17 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = new Set(); // Use a Set to store numbers we've seen
+
+  for (const num of array) {
+    const complement = target - num; // Calculate the complement of the current number
+    if (seenNumbers.has(complement)) { // Check if we've seen the complement before
+      return true; // If we have, return true because we found two numbers that sum up to the target
+    }
+    seenNumbers.add(num); // Otherwise, add the current number to the Set
+  }
+
+  return false; // If we go through the entire array without finding a pair, return false
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
